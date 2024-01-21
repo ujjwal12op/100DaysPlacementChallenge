@@ -1,0 +1,197 @@
+Day 3
+
+Arrays
+
+Q1) Maximum subarray sum
+
+public class MaximumSubarraySum {
+
+    public static int subarraySum(int arr[],int n)
+    {
+        //Kadanes algorithm
+        int max = Integer.MIN_VALUE;
+        int sum=0;
+        for(int i=0;i<n;i++)
+        {
+            sum+=arr[i];
+
+            if(sum>max)
+            {
+                max=sum;
+            }
+
+            if(sum<0)
+            {
+                sum=0;
+            }
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+        // Optimised approach : Kadanes Algorithm
+        int arr[] = {-2,-3,4,-1,-2,1,5,-3};
+        int n=arr.length;
+        int answer=subarraySum(arr, n);
+        System.out.println("the maximum subarray sum is "+answer);
+    }
+}
+
+
+
+Q2) Search in rotated Sorted array
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int low = 0;
+        int high = nums.length-1;
+
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+
+            if(nums[mid]==target){
+                return mid;
+            }
+            // Check for left sorted
+            if(nums[low]<=nums[mid])
+            {
+                if(nums[low]<=target && target<=nums[mid])
+                {
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            //Right sorted
+            else{
+                if(nums[mid]<=target && target<=nums[high])
+                {
+                    
+                    low=mid+1;
+                }
+                else{
+                    high=mid-1;
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+Q3) Contains Duplicate
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+public class ContainsDuplicate {
+    public static Boolean containsduplicate(int arr[])
+    {
+        Set<Integer> set = new HashSet<>();
+        for(int num : arr){
+            if(set.contains(num))
+            {
+                return true;
+            }
+            else{
+                set.add(num);
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        // int arr[] = {1,2,3,4,1};
+        int arr[] = {1,2,3,4,5};
+        Boolean ans = containsduplicate(arr);
+        System.out.println(ans);
+    }
+}
+
+Q4) Choclate Problem
+
+// // JAVA Code For Chocolate Distribution Problem
+// import java.util.Arrays;
+
+// public class ChocolateDistribution {
+
+// 	/**
+// 	* Calculates the minimum difference between the maximum and minimum chocolates
+// 	* received by any student after distributing chocolates in packets.
+// 	*
+// 	* @param arr Array representing sizes of chocolate packets.
+// 	* @param m Number of students.
+// 	* @return Minimum difference between maximum and minimum chocolates.
+// 	*/
+// 	public static int chocolateDistribution(int arr[], int m) {
+// 		// Check base cases
+// 		if (arr.length == 0 || m == 0) {
+// 			return 0;
+// 		}
+
+// 		// Sort the array to simplify calculations
+// 		Arrays.sort(arr);
+
+// 		// Check if there are enough packets for the given number of students
+// 		if (arr.length - 1 < m) {
+// 			// Invalid input
+// 			return -1;
+// 		}
+
+// 		// Initialize minimum difference to the maximum possible integer value
+// 		int min_diff = Integer.MAX_VALUE;
+
+// 		// Iterate through the array to find the minimum difference
+// 		for (int i = 0; i < arr.length; i++) {
+// 			// Calculate the ending index of the current window
+// 			int nextWindow = i + m - 1;
+
+// 			// Break if the window goes beyond the bounds of the array
+// 			if (nextWindow >= arr.length)
+// 				break;
+
+// 			// Calculate the difference between the last and first elements in the window
+// 			int diff = arr[nextWindow] - arr[i];
+
+// 			// Update the minimum difference if a smaller difference is found
+// 			min_diff = Math.min(min_diff, diff);
+// 		}
+
+// 		// Return the calculated minimum difference
+// 		return min_diff;
+// 	}
+
+// 	public static void main(String[] args) {
+// 		// Example input
+// 		int arr[] = {12, 4, 7, 9, 2, 23, 25, 41, 30, 40, 28, 42, 30, 44, 48, 43, 50};
+// 		int m = 7;
+
+// 		// Calculate the result using the chocolateDistribution method
+// 		int result = chocolateDistribution(arr, m);
+
+// 		// Print the result or indicate an invalid input
+// 		if (result != -1) {
+// 			System.out.println("Minimum difference is " + result);
+// 		} else {
+// 			System.out.println("Invalid input");
+// 		}
+// 	}
+// }
+
+121. Best Time to Buy and Sell Stock
+
+class Solution {
+    public int maxProfit(int[] prices) {
+         int maxprofit=0;
+        int minprofit=Integer.MAX_VALUE;
+        for(int i=0;i<prices.length;i++)
+        {
+           
+
+            minprofit=Math.min(minprofit,prices[i]);
+            maxprofit=Math.max(maxprofit,prices[i]-minprofit);
+
+        }
+        return maxprofit;
+    }
+}
