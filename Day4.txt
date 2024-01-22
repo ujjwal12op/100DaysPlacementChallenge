@@ -1,0 +1,171 @@
+1) Find missing and repeating numbers
+
+
+
+
+import java.util.*;
+
+public class tUf {
+
+    public static int[] findMissingRepeatingNumbers(int[] a) {
+        int n = a.length; // size of the array
+        int[] hash = new int[n + 1]; // hash array
+
+        //update the hash array:
+        for (int i = 0; i < n; i++) {
+            hash[a[i]]++;
+        }
+
+        //Find the repeating and missing number:
+        int repeating = -1, missing = -1;
+        for (int i = 1; i <= n; i++) {
+            if (hash[i] == 2) repeating = i;
+            else if (hash[i] == 0) missing = i;
+
+            if (repeating != -1 && missing != -1)
+                break;
+        }
+        int[] ans = {repeating, missing};
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {3, 1, 2, 5, 4, 6, 7, 5};
+        int[] ans = findMissingRepeatingNumbers(a);
+        System.out.println("The repeating and missing numbers are: {"
+                           + ans[0] + ", " + ans[1] + "}");
+    }
+}
+
+
+Q2) Kth Largest Element
+
+import java.util.*;
+class Solution {
+
+    static void kth_Largest_MaxHeap(int[] arr, int k) {
+
+        PriorityQueue<Integer>pq= new PriorityQueue<>((a,b)->b-a);
+        
+        int n = arr.length  ;
+
+        for (int i = 0; i < arr.length; i++) {
+            pq.add(arr[i])  ;
+        }
+
+        int f = k - 1 ;
+
+        while (f > 0) {
+            pq.remove()  ;
+            f-- ;
+        }
+
+        System.out.println("Kth Largest element "+pq.peek())  ;
+    }
+
+    static void kth_Smallest_MinHeap(int[] arr, int k) {
+
+        PriorityQueue<Integer>pq= new PriorityQueue<>();
+        int n = arr.length  ;
+
+        for (int i = 0; i < n; i++) {
+            pq.add(arr[i])  ;
+        }
+
+        int f = k - 1 ;
+
+        while (f > 0) {
+            pq.remove()  ;
+            f-- ;
+        }
+
+        System.out.println("Kth Smallest element "+pq.peek())  ;
+    }
+ 
+public static void main(String args[]) {
+
+    int arr[] = {1, 2, 6, 4, 5, 3}  ;
+
+    kth_Largest_MaxHeap(arr, 3)  ;
+    kth_Smallest_MinHeap(arr, 3)  ;
+}
+}
+
+
+Q3) Product of array except its self
+
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int left[] = new int[nums.length];
+        int right[] = new int[nums.length];
+
+        left[0]=1;
+        for(int i=1;i<nums.length;i++)
+        {
+            left[i]=left[i-1]*nums[i-1];
+        }
+
+        right[nums.length-1]=1;
+        for(int i=nums.length-2;i>-1;i--)
+        {
+            right[i]=right[i+1]*nums[i+1];
+        }
+
+        int ans[] = new int[nums.length];
+
+        for(int i=0;i<nums.length;i++)
+        {
+            ans[i]=left[i]*right[i];
+        }
+
+        return ans;
+    }
+
+    
+}
+
+
+Q4) Maximum Subarray Product
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        int left=1;
+        int right=1;
+        int ans=nums[0];
+
+        for(int i=0;i<nums.length;i++)
+        {
+            // If left or right encounter 0 update it to 1;
+            left= left==0 ? 1 : left;
+            right= right==0 ? 1: right;
+
+            left*=nums[i];
+            right*=nums[n-1-i];
+            ans=Math.max(ans,Math.max(left,right));
+        }
+        return ans;
+    }
+}
+
+Q5) Search in rotated sorted array
+
+
+int low=0;
+int high=nums.length-1;
+int ans= integer.max_value
+while(low<=high)
+{
+int mid=(low+high)/2;
+if(nums[low]<nums[mid])
+{
+int ans= Math.min(ans,nums[low]);
+low=mid+1;
+}
+else{
+int ans=Math.min(ans,nums[mid])
+high=mid-1;
+}
+
+return ans;
+}
