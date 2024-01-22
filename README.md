@@ -1,4 +1,4 @@
-# 100 Days of DSA + Data Science Challenge
+# 100 Days of DSA + Development
 
 ## Overview
 
