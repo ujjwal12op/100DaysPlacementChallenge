@@ -1,0 +1,127 @@
+Day 5 : 23/01/24
+
+Q1) 3 sum problem
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class threesum {
+
+    public static List<List<Integer>> threeSum(int[] nums)
+    {      
+        // Initial cases
+
+        if(nums==null || nums.length<3) return new ArrayList<>();
+       // Variables
+        int n=nums.length;
+        // Sort
+        Arrays.sort(nums);
+        // Data structure uninque values
+        Set<List<Integer>> map = new HashSet<>();
+        // Loops : Fix karo ek ko , left right set karo , sum ki conditions
+        for(int i=0;i<n-2;i++)
+        {
+            int left=i+1;
+            int right=n-1;
+            while(left<right)
+            {
+                int sum=nums[i]+left+right;
+                if(sum==0)
+                {
+                    map.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                    left++;
+                    right--;
+                }
+                else if(sum<0)
+                {
+                    left++;
+                }
+                else{
+                    right--;
+                }
+                
+            }
+            return new ArrayList<>(map);
+        }
+
+
+    }
+    public static void main(String[] args) {
+        
+    }
+}
+
+
+Q2) Container with Most water
+
+class Solution {
+    public int maxArea(int[] height) {
+        int n=height.length;
+         int left=0;
+         int right=n-1;
+         int maxArea=0;
+         // 2. Sorting? // No
+         // 3. Data Structure // No
+         // 4. Loops and conditions 
+         while(left<right)
+         {
+            int area = Math.min(height[left],height[right]) * (right-left);
+
+            maxArea=Math.max(maxArea, area);
+
+            if(height[left]<height[right]){
+                left++;
+            }
+            else{
+                right--;
+            }
+         }
+         return maxArea;
+
+    }
+}
+
+
+
+
+Q3) Longest Subarray with sum divisible by K
+
+
+public class LongestSubarrayDivisbleK {
+    public static int longest(int arr[])
+    {
+        //initial cases
+        //variables
+        int n = arr.length;
+        int longest=0;
+        // n.length
+        // Sorting
+        // Loops
+        for(int i=0;i<n;i++)
+        {
+            int currentLength=0;
+            int sum=0;
+            for(int j=i;j<n;j++)
+            {
+                sum+=arr[i];
+                if(sum%3==0)
+                {
+                     currentLength=j-i+1;
+                     longest=Math.max(currentLength,longest);
+                }
+            }
+        }
+        return longest;
+        // Store karne ke lie kuch
+        // If condition
+        // return statement
+    }
+    public static void main(String[] args) {
+        int ans[] ={2,7,6,1,4,5};
+        int res=longest(ans);
+        System.out.println("The longest subarray length is "+res);
+    }
+}
