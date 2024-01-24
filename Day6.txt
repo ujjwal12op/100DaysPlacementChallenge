@@ -1,0 +1,154 @@
+24/01/24 Day6
+
+242. Valid Anagram
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        // Create HashMaps to store character frequencies in both strings
+        Map<Character, Integer> sMap = new HashMap<>();
+        Map<Character, Integer> tMap = new HashMap<>();
+
+        // Count character frequencies in string s
+        for (char ch : s.toCharArray()) {
+            sMap.put(ch, sMap.getOrDefault(ch, 0) + 1);
+        }
+
+        // Count character frequencies in string t
+        for (char ch : t.toCharArray()) {
+            tMap.put(ch, tMap.getOrDefault(ch, 0) + 1);
+        }
+
+        // Check if the two HashMaps are equal
+        return sMap.equals(tMap);
+
+    }
+}
+
+
+Q2) Valid Parenthesis
+
+// Time : 0(n) Space : 0(n)
+
+import java.util.*;
+
+class Solution {
+    public boolean isValid(String s) {
+        // Charachter array
+        char[] chars = s.toCharArray(); // converting the string charachters in array format
+
+        Stack<Character> stack1 = new Stack<>(); // using the stack class
+
+        for (char ele : chars)// traversing inside the charachter array and taking one and putting in the
+                              // stack
+        {
+            // Push Case
+            if (ele == '(' || ele == '[' || ele == '{') {
+                stack1.push(ele);
+                continue;
+            }
+
+            // Suppose there is no openeing brackets so after traversing nothing will be in
+            // out stack so it will be empty, thus that wont be a valid parantheses.
+
+            if (stack1.isEmpty()) {
+                return false;
+            }
+
+            // Pop case
+            char top = stack1.pop();
+            if (top == '(' && ele != ')') {
+                return false;
+            }
+
+            if (top == '[' && ele != ']') {
+                return false;
+            }
+            if (top == '{' && ele != '}') {
+                return false;
+            }
+        }
+        return (stack1.isEmpty() == true);
+    }
+
+}
+
+
+Q3) Remove Consecutive duplicates of a string
+
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class RemoveDuplicates {
+    public static String removeConsecutiveDuplicates(String s) {
+        /*
+         * 1. Initial Edge case
+         * 2. Data Structure
+         * 3. Variables
+         * 4. Loop
+         * 5. If else
+         * 6. return statement
+         * 
+         */
+        if (s == null || s.isEmpty()) {
+            return s;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(s.charAt(0));
+
+        for (int i = 1; i < s.length(); i++) {
+            char current = s.charAt(i);
+            char previous = s.charAt(i - 1);
+
+            if (current != previous) {
+                sb.append(current);
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "aazbbby";
+        String res = removeConsecutiveDuplicates(s);
+        System.out.println(res);
+    }
+}
+
+
+Q4) Longest Common Prefix
+
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        // Initial edge case
+        if(strs==null || strs.length==0)
+        {
+            return "";
+        }
+
+        String prefix=strs[0];
+
+        for(int i=1;i<strs.length;i++)
+        {
+            int j=0;
+            while(j<prefix.length() && j<strs[i].length() && prefix.charAt(j)==strs[i].charAt(j)){
+                j++;
+            }
+            prefix=prefix.substring(0,j);
+             if(prefix.isEmpty())
+        {
+            break;
+        }
+        }
+    return prefix;
+    }
+
+    
+}
+
+
