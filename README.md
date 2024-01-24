@@ -1,14 +1,16 @@
-# 100 Days of DSA + Development
+Certainly! If you're focusing on web development in your 100 Days of DSA + Development challenge, you can modify the README.md file accordingly. Here's an example:
+
+# 100 Days of DSA + Web Development
 
 ## Overview
 
-Welcome to my 100-day challenge where I am combining Data Structures and Algorithms (DSA) with Data Science! This repository documents my daily progress, focusing on building a strong foundation in DSA and enhancing my skills in the field of Data Science.
+Welcome to my 100-day challenge where I am combining Data Structures and Algorithms (DSA) with Web Development! This repository documents my daily progress, focusing on building a strong foundation in DSA and enhancing my skills in creating web applications.
 
 ## Goals
 
 1. **DSA Mastery**: Strengthen understanding of essential Data Structures and Algorithms for efficient problem-solving.
-2. **Data Science Skills**: Develop proficiency in key Data Science concepts, tools, and techniques.
-3. **Project Implementation**: Apply DSA and Data Science skills to real-world projects for practical experience.
+2. **Web Development Skills**: Enhance proficiency in building dynamic and responsive web applications.
+3. **Project Implementation**: Apply DSA and Web Development skills to real-world projects for practical experience.
 
 ## Topics Covered
 
@@ -23,35 +25,25 @@ Welcome to my 100-day challenge where I am combining Data Structures and Algorit
 - Hashing
 - Advanced Algorithms
 
-### Data Science
+### Web Development
 
-- Python Basics for Data Science
-- Data Manipulation and Analysis with Pandas
-- Exploratory Data Analysis (EDA)
-- Data Visualization using Matplotlib and Seaborn
-- Machine Learning Fundamentals
-- Model Evaluation and Hyperparameter Tuning
-- Feature Engineering
-- Introduction to Deep Learning
+- HTML, CSS, and JavaScript fundamentals
+- Front-end frameworks (e.g., React, Angular, Vue)
+- Back-end development (Node.js, Express, Django, Flask)
+- Database integration (e.g., MongoDB, MySQL, PostgreSQL)
+- RESTful API design
+- Version control with Git
 
-## Daily Structure
 
-- **Weekdays**:
-  - Focus on DSA concepts, solve problems on platforms like LeetCode and HackerRank.
-  - Deepen understanding of algorithms and data structures.
-
-- **Weekends**:
-  - Apply DSA knowledge to solve coding challenges in Data Science projects.
-  - Dive into a specific Data Science topic or work on a mini-project.
 
 ## Resources
 
 - **DSA Platforms**: LeetCode, HackerRank, GeeksforGeeks.
-- **Data Science Tools**: Python, Jupyter Notebooks, NumPy, Pandas, Scikit-Learn.
-- **Projects**: [List any projects or datasets you plan to use.]
+- **Web Development Tools**: HTML, CSS, JavaScript, React, Node.js, Express, Git.
+- **Projects**: [List any web development projects or coding exercises you plan to work on.]
 
 ## Connect with Me
 
-- [LinkedIn](#) | [Twitter](#) | [Blog](#)
+- [https://www.linkedin.com/in/ujtiwari/](#) 
 
-Feel free to follow along or join me on this exciting journey of mastering DSA and advancing my skills in Data Science! 🚀
+Feel free to follow along or join me on this exciting journey of mastering DSA and advancing my skills in web development! 🚀
