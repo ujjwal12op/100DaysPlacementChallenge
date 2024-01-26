@@ -1,0 +1,45 @@
+Day 8 : 26/01/24
+
+Q) Group Anagrams
+
+
+import java.util.*;
+
+class Solution {
+
+    private String getFrequency(String str) {
+        int freq[] = new int[26];
+        for (char ch : str.toCharArray()) {
+            freq[ch - 'a']++;
+        }
+        StringBuilder fs = new StringBuilder();
+        char ch = 'a';
+        for (int i : freq) {
+            fs.append(ch);
+            fs.append(i);
+            ch++;
+        }
+        return fs.toString();
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return new ArrayList<>();
+        }
+
+        Map<String, List<String>> frequencyMap = new HashMap<>();
+
+        for (String str : strs) {
+            String frequency = getFrequency(str);
+
+            if (frequencyMap.containsKey(frequency)) {
+                frequencyMap.get(frequency).add(str);
+            } else {
+                List<String> strList = new ArrayList<>();
+                strList.add(str);
+                frequencyMap.put(frequency, strList);
+            }
+        }
+        return new ArrayList<>(frequencyMap.values());
+    }
+}
