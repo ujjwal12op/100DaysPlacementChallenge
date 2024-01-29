@@ -1,0 +1,227 @@
+29/01/24
+
+Day 10 : Tree Series
+
+Q1 ) Level Order Traversal
+
+import java.util.*;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        List<List<Integer>> wraplist = new LinkedList<List<Integer>>();
+        if (root == null) {
+            return wraplist;
+        }
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int levelNum = queue.size();
+            List<Integer> subList = new LinkedList<Integer>();
+            for (int i = 0; i < levelNum; i++) {
+                TreeNode current = queue.poll();
+                subList.add(current.val);
+                if (current.left != null) queue.offer(current.left);
+                if (current.right != null) queue.offer(current.right);
+            }
+            wraplist.add(subList);
+        }
+        return wraplist;
+    }
+}
+
+
+Q2) Iterative approach of Preorder Traversal
+
+import java.util.*;
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> preOrder = new ArrayList<>();
+
+        if (root == null) {
+            return preOrder;
+        }
+
+        Stack<TreeNode> st = new Stack<>();
+        st.push(root);
+        while (!st.isEmpty()) {
+            TreeNode currentNode = st.pop();
+            preOrder.add(currentNode.val);
+
+            if (currentNode.right != null) {
+                st.push(currentNode.right);
+            }
+            if (currentNode.left != null) {
+                st.push(currentNode.left);
+            }
+        }
+        return preOrder;
+    }
+}
+
+
+Q3)  94. Binary Tree Inorder Traversal	
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        // List<Integer> ans = new ArrayList<>();
+        // if(root==null)
+        // {
+        //     return ans;
+        // }
+        // ans.addAll(inorderTraversal(root.left));
+        // ans.add(root.val);
+        // ans.addAll(inorderTraversal(root.right));
+        // return ans;
+
+        // Iterative approach
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        List<Integer> lst= new ArrayList<Integer>();
+        TreeNode node = root;
+
+        while(true){
+            if(node!=null)
+            {
+                stk.push(node);
+                node=node.left;
+            }else{
+                if(stk.isEmpty()){
+                    break;
+                }
+                node=stk.pop();
+                lst.add(node.val);
+                node=node.right;
+            }
+            
+        }
+        return lst;
+    }
+}
+
+
+Q4) 145. Binary Tree Postorder Traversal
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        // List<Integer> ans = new ArrayList<>();
+
+        // if(root==null)
+        // {
+        //     return ans;
+        // }
+        // ans.addAll(postorderTraversal(root.left));
+        // ans.addAll(postorderTraversal(root.right));
+        // ans.add(root.val);
+        // return ans;
+
+        //Iterative approach
+
+        Stack<TreeNode> st1 = new Stack<TreeNode>();
+        Stack<TreeNode> st2 = new Stack<TreeNode>();
+        List<Integer> lst = new ArrayList<>();
+
+        if(root==null)
+        {
+            return lst;
+        }
+
+        st1.push(root);
+        while(!st1.isEmpty())
+        {
+            root = st1.pop();
+            st2.add(root);
+
+            if(root.left!=null) st1.push(root.left);
+            if(root.right!=null) st1.push(root.right);
+
+        }
+        while(!st2.isEmpty())
+        {
+            lst.add(st2.pop().val);
+        }
+        return lst;
+
+    }
+}
+
+
+Q5) Max Depth of a Binary Tree
+
+Recursive Code
+
+
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null)
+        {
+            return 0;
+        }
+
+        int lh = maxDepth(root.left);
+        int rh = maxDepth(root.right);
+
+        return 1+Math.max(lh,rh);
+    }
+}
